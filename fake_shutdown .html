@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SYSTEM SHUTDOWN</title>
+    <style>
+        body {
+            background-color: black;
+            color: red;
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .warning {
+            font-size: 24px;
+            text-align: center;
+            animation: blink 0.5s infinite;
+        }
+        .message {
+            font-size: 18px;
+            margin: 10px 0;
+            color: white;
+        }
+        .error-code {
+            font-size: 16px;
+            color: #ff5555;
+            margin-top: 20px;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="warning">⚠ CRITICAL SYSTEM FAILURE ⚠</div>
+    <div class="message">Unauthorized access detected!</div>
+    <div class="message">Initiating emergency shutdown...</div>
+    <div class="message">Terminating all processes...</div>
+    <div class="message">WARNING: Data loss may occur!</div>
+    <div class="message">System integrity compromised!</div>
+    <div class="error-code">ERROR: 0xDEADBEEF</div>
+    <div class="error-code">STOP: 0x0000007B (INACCESSIBLE_BOOT_DEVICE)</div>
+    <div class="error-code">Contact your system administrator immediately.</div>
+
+    <script>
+        // Make it more dramatic with delayed messages
+        setTimeout(() => {
+            const newMsg = document.createElement("div");
+            newMsg.className = "message";
+            newMsg.textContent = "FAILED TO ABORT SHUTDOWN!";
+            document.body.appendChild(newMsg);
+        }, 3000);
+
+        setTimeout(() => {
+            const newMsg = document.createElement("div");
+            newMsg.className = "message";
+            newMsg.textContent = "Attempting system restore...";
+            document.body.appendChild(newMsg);
+        }, 5000);
+
+        setTimeout(() => {
+            const newMsg = document.createElement("div");
+            newMsg.className = "warning";
+            newMsg.textContent = "RESTORE FAILED!";
+            document.body.appendChild(newMsg);
+        }, 7000);
+
+        setTimeout(() => {
+            const newMsg = document.createElement("div");
+            newMsg.className = "message";
+            newMsg.style.color = "red";
+            newMsg.textContent = "SHUTDOWN INEVITABLE...";
+            document.body.appendChild(newMsg);
+        }, 9000);
+
+        // Simulate a countdown
+        setTimeout(() => {
+            const countdown = document.createElement("div");
+            countdown.className = "message";
+            countdown.style.fontSize = "28px";
+            countdown.textContent = "5";
+            document.body.appendChild(countdown);
+
+            let count = 4;
+            const timer = setInterval(() => {
+                if (count > 0) {
+                    countdown.textContent = count;
+                    count--;
+                } else {
+                    countdown.textContent = "SHUTDOWN COMPLETE.";
+                    clearInterval(timer);
+                }
+            }, 1000);
+        }, 11000);
+    </script>
+</body>
+</html>
